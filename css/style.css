@@ -24,6 +24,7 @@ table {
 #desc {
     margin: 20px auto 0;
     width: 600px;
+	text-align: justify;
 }
 #opt {
     margin: 20px auto 0;
