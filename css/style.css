@@ -6,6 +6,9 @@ body {
     color: #2A211C;
     font: 13.34px/1.4 helvetica,arial,freesans,clean,sans-serif;
 }
+table {
+	border-collapse: collapse;
+}
 #title {
     color: #006699;
     font-size: 30px;
