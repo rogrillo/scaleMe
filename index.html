@@ -1,88 +1,115 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset='utf-8'>
 
-  <title>rogrillo/scaleMe @ GitHub</title>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+		<script src="lib/jquery.min.js" type="text/javascript"></script>
+		<script src="src/scaleMe.min.js" type="text/javascript"></script>
+		<script src="lib/shCore.js" type="text/javascript"></script>
+		<script src="lib/shBrushJScript.js" type="text/javascript"></script>
+		<link href="css/shCore.css" rel="stylesheet" media="all" />
+		<link href="css/shCoreDefault.css" rel="stylesheet" media="all" />
+		<link href="css/style.css" rel="stylesheet" media="all" />
+		<title>scaleMe</title>
+	</head>
+	
+	<body>
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #225795;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #dda86a; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #dda86a; }
-    h3 { text-align: center; color: #dda86a; }
-    a { color: #dda86a; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
+		<div id="title">scaleMe v0.1</div>
+		
+		<div id="desc">
+		scaleMe is a jQuery plugin that allows you to easily resize and center an image on the page proportional to its original dimensions based on the size of a parent element. Support various options, and callback functions. Works well in IE7+, Firefox, Google Chrome, Chrome and Safari.
+		</div>
+		
+		<div id="opt">
+			<table cellspacing="0">
+				<tr class="top">
+					<td>Option</td>
+					<td>Default Value</td>
+					<td>Description</td>
+				</tr>
+				<tr class="ref">
+					<td>fade</td>
+					<td><i>false</i></td>
+					<td><i>true</i> to use fade effect.</td>
+				</tr>
+				<tr class="ref">
+					<td>fadeSpeed</td>
+					<td>500</td>
+					<td>Fade speed, the fade option must be <i>true</i>.</td>
+				</tr>
+				<tr class="ref">
+					<td>container</td>
+					<td>parent()</td>
+					<td>Reference container to the image, must be a jQuery object.</td>
+				</tr>
+				<tr class="ref">
+					<td>position</td>
+					<td>'relative'</td>
+					<td>Image position under the container.</td>
+				</tr>
+				<tr class="ref">
+					<td>onLoad</td>
+					<td><i>null</i></td>
+					<td>Callback function, is executed for each image when it's loaded, the image object is passed as first parameter of the funcion.</td>
+				</tr>
+				<tr class="ref">
+					<td>onError</td>
+					<td><i>null</i></td>
+					<td>Callback function, is executed for each image when it's not loaded, the image object is passed as first parameter of the funcion.</td>
+				</tr>
+				<tr class="ref">
+					<td>onLoadAll</td>
+					<td><i>null</i></td>
+					<td>Callback function, is executed when all images are processed.</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="title2">Exemple:</div>
+		
+		<div id="exemple">
+			<div class="box"><img class="img" src="img/img.jpg" /></div>
+			<div class="box"><img class="img" src="img/img2.jpg" /></div>
+			<div class="box"><img class="img" src="img/img3.png" /></div>
+		</div>
+		
+		<div id="go">
+			<button id="btn" onclick="scaleMe();">scaleMe</button>
+		</div>
+		
+		<pre class="brush: js; toolbar: false;">
+			$('.img').scaleMe({
+				fade: true,
+				fadeSpeed: 2000,
+				onLoad: function(self) {
+					console.info('Image: ' + self.attr('src') + ' loaded!');
+				},
+				onError: function(self) {
+					console.warn('Imagem: ' + self.attr('src') + ' not found!');
+				},
+				onLoadAll: function() {
+					console.info('All images processed!');
+				}
 
-<body>
-  <a href="https://github.com/rogrillo/scaleMe"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+			});
+		</pre>
+		
+		<div id="download">
+			<a href="https://github.com/rogrillo/scaleMe/">Download Here</a>
+		</div>
+		
+		<script>
+			var scaleMe = function() {
+				$('.img').scaleMe({
+					fade: true,
+					fadeSpeed: 2000
+				});
+			
+			};
+			SyntaxHighlighter.all();
+		</script>
+	
+	</body>
 
-  <div id="container">
-
-    <div class="download">
-      <a href="https://github.com/rogrillo/scaleMe/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/rogrillo/scaleMe/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
-
-    <h1><a href="https://github.com/rogrillo/scaleMe">scaleMe</a>
-      <span class="small">by <a href="https://github.com/rogrillo">rogrillo</a></span></h1>
-
-    <div class="description">
-      scaleMe is a jQuery plugin that allows you to easily resize and center an image on the page proportional to its original dimensions based on the size of a parent element. Support various options, and callback functions.
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-      <h2>Authors</h2>
-      <p>rogrillo (rodi330@gmail.com)<br/>      </p>
-    
-
-    
-      <h2>Contact</h2>
-      <p>Rodrigo Grillo (rodi330@gmail.com)<br/>      </p>
-    
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/rogrillo/scaleMe/zipball/master">zip</a> or
-      <a href="https://github.com/rogrillo/scaleMe/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/rogrillo/scaleMe</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/rogrillo/scaleMe">rogrillo/scaleMe</a>
-    </div>
-
-  </div>
-
-</body>
-</html>
+</html>	
