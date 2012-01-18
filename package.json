@@ -1,0 +1,14 @@
+{
+  "name": "scaleMe",
+  "description": "scaleMe is a jQuery plugin that allows you to easily resize and center an image on the page proportional to its original dimensions based on the size of a parent element.",
+  "version": "0.2",
+  "dependencies": {
+    "jquery": ">=1.6"
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/rogrillo/scaleMe.git"
+    }
+  ]
+}
