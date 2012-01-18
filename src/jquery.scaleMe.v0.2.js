@@ -73,6 +73,16 @@
 			
 			this.src = src;
 			
+			if(!this.complete) {
+				var self = this,
+					i = setInterval(function() {
+						if(self.complete) {
+							complete();
+							clearInterval(i);
+						}
+					}, 500);
+			}
+			
 			img.bind('error', function() {
 			
 				if(settings.onError && typeof settings.onError === 'function') {
